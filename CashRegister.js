@@ -1,6 +1,7 @@
 function CashRegister(){
 //Janet testing testing 123
 //melissa testing
+//kim testing
 
 	// JavaScript Document
 	var storeInfo = { //Database for information on the store

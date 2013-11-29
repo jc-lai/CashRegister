@@ -1,63 +1,91 @@
 // JavaScript Document
+
+function store(storeNum, address, phonNum, email){
+	this.storeNum = new Number;
+	this.address = "";
+	this.phonNum = "000-000-0000";
+	this.email = "";
+	this.catagory = ""; 
+}
+
+function employee(name, lastname, position, empNum, phonNum, discount){
+	this.name = "";
+	this.lastname = "";
+	this.position = "";
+	this.empNum = new Number;
+	this.phonNum = "000-000-0000";
+	this.discount = new Number;
+}
+
+function product(name, prodNum, SKU, qte, wholePrice, marketPrice, salePrice){
+	this.name = "";
+	this.prodNum= new Number;
+	this.SKU = "";
+	this.qte = new Number;
+	this.wholePrice = new Number;
+	this.marketPrice = new Number;
+	this.salePrice =new Number;
+}
+
+function receipt(receiptNum, dateTime, numItems, subTotal, tax, total, payMethod){
+	this.receiptNum = new Number;
+	this.dateTime = new Date(day,month,year[hour,min]); 
+	this.numItems = new Number;
+	this.subTotal = new Number;
+	this.tax = new Number;
+	this.total = new Number;
+	this.payMethod = "";
+	
+}
+
+function promo(name, code, expire, condition){
+	this.name = "";
+	this.code = new Number;
+	this.expire = new Date;
+	this.condition = "";
+}
+
+function coupon(name, code, expire, condition){
+	this.name = "";
+	this.code = new Number;
+	this.expire = new Date;
+	this.condition = "";
+}
+
 function cashRegister(){
 
-var storeInfo = { //Database for information on the store
-	name: "",
-	address: "",
-	phonenumber: "",
-	email:""
-	};
+//Example of storeInfo constructor
+var store0001 = new store(0001, "2367 Sherbrooke O, H9J2W5, Montreal, QC", "514-965-0256", "store0001@gmail.com"); 
 
-var empList = { 	//Databases of the employees
-	name:"",
-	lastname: "",
-	empNum: 0
-	}; 
-	
-var itemList = { 	//Database of items
-	itemName: "",
-	itemSKU: "",
-	itemInv: 0
-	};
-	
-var promoList = { 	//Database of promotions
-	promoName:"",
-	promoCode:"",
-	promoExp:"",
-	promoCond:"" //promo condition can be added later
-	};
-	
-var couponList = { 	//Database of coupons
-	couponName:"",
-	couponCode:"",
-	couponExp:"",
-	couponCond: "" //coupon condition can be added later
-	};
-	
-var transactionNum = { 	//Database of all transactions
-	transNum:"",
-	numOfItem:0,
-	transTotal: 0.00,
-	
-	};	
-	
-var typeCard = { //database of the types of payment cards (credit,debit,gift)	
-	typeCard: "",
-	Company: "",
-	
-	}; 
+//Example of empList constructor
+var Melissa = new employee("Melissa", "Lapointe" ,"Assistant Manager", 59302, "514-965-0256", 50); 
 
-var subTotal;
-var tax;
-var total;
+//Example of item constructor
+var redPumps = new product("Dahlia Red Pumps", 53608, 45010564823, 302, 28.56, 89.00, 0);
+
+//Example of receipt constructor
+var receipt001 = new receipt(0236,  "20/06/2014 2:63 pm" , 4, 23.50, 3.52, 27.02, "Credit" );
+
+//Example of promo constructor
+var promo02 = new promo("Two4One", 503820, "20/06/2014 2:63 pm", "Only 2 per person");
+
+//Example of coupon constructor
+var coupon04 = new coupon("50% Off", 5898123, "20/06/2014 2:63 pm", "Must be on items 30$ or over");
+	
+var typeCard = [];
+
+var subTotal = new Number;
+var GSTtax = 0.05;;
+var QSTtax = 0.09975;
+var total = new Number;
 
 function init(){ //onLoad of body
-	//call function mainLogin
+	// call function mainLogin
 	// when function mainLogin is done => call function strtDay
 };
 
 function mainLogin(){ 
-	//prompt employee login/password | if employee has correct access number then continue, if false = reset
+	// prompt employee login/password | if employee has correct access number then continue, if false = reset
 		function resetMainLogin(){ //if false
 		}; 
 	function prevDay(){ //the closedDay function of the day before
@@ -77,7 +105,8 @@ function strtDay(){
 	
 	function empLogin(){ 
 		//login for employee on the cash register
-		//call displayTrans
+		displayTrans(); //calls the function displayTrans
+		
 	};
 	
 	function empLogout(){
@@ -87,24 +116,25 @@ function strtDay(){
 };
 
 function displayTrans(){
-	//call function scanItem
-	//call function coupon/promo
-	//variable of subtotal from adding all items and discount
-	//add tax
-	//display total 
-};
-
-function scanItem(){	
-	//if statement if the item exists in our database. true = addItem, false = unknownItem
-	function addItem(){}; //adds to function displayTrans
 	
-	function unknownItem(){ //adds an unknown item to the itemList database
-		function itemAuth(){
-			//call addItem to add the item to function displayTrans
+	function scanItem(){	
+		//if statement if the item exists in our database. true = addItem, false = unknownItem
+		function addItem(){}; //adds to function displayTrans
+		
+		function unknownItem(){ //adds an unknown item to the item database
+			function unknownItemAuth(){ //prompts a password needed to authorize the item
+				function addUnknownItem(){ //adds the unknown item to transaction
+				};
+			};
 		};
+		
 	};
 	
+	//call function applyCoupon or applyPromo when button is selected
+	//call function remove or applyPromo when button is selected
 };
+
+
 
 function setGiftCard(){
 	//swipe card
@@ -121,12 +151,10 @@ function cancelTrans(){}; //to cancel displayTrans function
 function returnItem(){
 	// if statement if resalable == true continue, add back to stock (itemList database)
 	// if statement if resalable == false, subtract from stock (itemList database)
-	}; 
+}; 
 
 
 /******************************************************************************  FOR ALL DISCOUNTS ******************************************/
-
-function addDiscount(){}; //add discount (promo/coupon) to the subtotal
 
 function coupon(){
 	// if statement for validation and expiration date = true => call function addDiscount
@@ -141,7 +169,7 @@ function empDiscount(){
 };
 
 function payMethod(){
-	//select button: credit card, debit card, cash or gift card
+	//select button: credit card, debit card, cash, gift or rewards
 	
 	//if cash button selected then call function payCash
 		function payCash(){
